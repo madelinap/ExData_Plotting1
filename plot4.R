@@ -1,0 +1,11 @@
+par(mfrow=c(2,2),ps=10,pch=19)
+time<-strptime(paste(as.character(myset$Date),as.character(myset$Time)," "), format="%d/%m/%Y %H:%M:%S")
+plot(time, as.numeric(as.character(myset$Global_active_power)), pch=19, cex = 0.05, type = "l", xlab="", ylab="Global Active Power (kilowatts)")
+plot(time, as.numeric(as.character(myset$Voltage)), pch=19, cex = 0.05, type = "l", xlab="datetime", ylab="Global Active Power (kilowatts)")
+plot(time, as.numeric(as.character(myset$Sub_metering_1)), type = "l", xlab="", ylab="Energy sub metering")
+lines(time, as.numeric(as.character(myset$Sub_metering_2)), col="red")
+lines(time, as.numeric(as.character(myset$Sub_metering_3)), col="blue")
+plot(time, as.numeric(as.character(myset$Global_reactive_power)), pch=19, cex = 0.05, type = "l", xlab="datetime", ylab="Global Reactive Power (kilowatts)")
+dev.copy(png, file="plot4.png",width = 480, height = 480)
+dev.off()
+    
