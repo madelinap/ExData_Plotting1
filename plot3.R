@@ -1,0 +1,10 @@
+mydata = read.table("household_power_consumption.txt", header = TRUE, sep = ";")
+myset<-subset(mydata, mydata$Date == "1/2/2007" | mydata$Date == "2/2/2007")
+time<-strptime(paste(as.character(myset$Date),as.character(myset$Time)," "), format="%d/%m/%Y %H:%M:%S")
+par(ps=10,pch=19)
+plot(time, as.numeric(as.character(myset$Sub_metering_1)), type = "l", xlab="", ylab="Energy sub metering")
+lines(time, as.numeric(as.character(myset$Sub_metering_2)), col="red")
+lines(time, as.numeric(as.character(myset$Sub_metering_3)), col="blue")
+dev.copy(png, file="plot3.png",width = 480, height = 480)
+dev.off()
+
